@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import ExternalImage from 'components/external_image';
-import SizeAwareImage from 'components/size_aware_image';
+import SingleImageView from 'components/single_image_view';
 
 export default function MarkdownImage({imageMetadata, src, ...props}) {
     return (
@@ -14,7 +14,7 @@ export default function MarkdownImage({imageMetadata, src, ...props}) {
             imageMetadata={imageMetadata}
         >
             {(safeSrc) => {
-                if (!safeSrc) {
+                if (!safeSrc || !imageMetadata.format) {
                     return (
                         <a
                             className='theme markdown__link'
@@ -27,11 +27,17 @@ export default function MarkdownImage({imageMetadata, src, ...props}) {
                         </a>
                     );
                 }
-
                 return (
-                    <SizeAwareImage
-                        {...props}
-                        src={safeSrc}
+                    <SingleImageView
+                        fileInfo={{
+                            extension: imageMetadata.format,
+                            height: imageMetadata.height,
+                            width: imageMetadata.width,
+                            link: safeSrc,
+                            name: props.alt,
+                        }}
+                        isEmbedVisible={props.isEmbedVisible}
+                        postId={props.postId}
                     />
                 );
             }}
@@ -44,4 +50,10 @@ MarkdownImage.propTypes = {
     imageMetadata: PropTypes.object,
     src: PropTypes.string.isRequired,
     title: PropTypes.string,
+    isEmbedVisible: PropTypes.bool.isRequired,
+    postId: PropTypes.string.isRequired,
+};
+
+MarkdownImage.defaultProps = {
+    imageMetadata: {},
 };

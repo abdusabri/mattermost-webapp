@@ -150,10 +150,10 @@ export default class ViewImageModal extends React.PureComponent {
         if (fileType === FileTypes.IMAGE && Boolean(fileInfo.id)) {
             let previewUrl;
             if (fileInfo.has_image_preview) {
-                previewUrl = getFilePreviewUrl(fileInfo.id);
+                previewUrl = fileInfo.link || getFilePreviewUrl(fileInfo.id);
             } else {
                 // some images (eg animated gifs) just show the file itself and not a preview
-                previewUrl = getFileUrl(fileInfo.id);
+                previewUrl = fileInfo.link || getFileUrl(fileInfo.id);
             }
 
             Utils.loadImage(

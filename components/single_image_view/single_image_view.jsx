@@ -89,7 +89,7 @@ export default class SingleImageView extends React.PureComponent {
         } = this.state;
 
         const {has_preview_image: hasPreviewImage, id} = fileInfo;
-        const fileURL = getFileUrl(id);
+        const fileURL = fileInfo.link || getFileUrl(id);
         const previewURL = hasPreviewImage ? getFilePreviewUrl(id) : fileURL;
 
         const previewHeight = fileInfo.height;

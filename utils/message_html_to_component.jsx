@@ -112,6 +112,7 @@ export function messageHtmlToComponent(html, isRHS, options = {}) {
                         imageMetadata={options.imagesMetadata && options.imagesMetadata[attribs.src]}
                         {...attribs}
                         {...options.imageProps}
+                        postId={options.postId}
                     />
                 );
             },
