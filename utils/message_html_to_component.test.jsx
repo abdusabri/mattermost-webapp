@@ -41,4 +41,11 @@ That was some latex!`;
 
         expect(messageHtmlToComponent(html, false, {hasPluginTooltips: true})).toMatchSnapshot();
     });
+
+    test('Inline markdown image', () => {
+        const options = {markdown: true};
+        const html = TextFormatting.formatText('![Mattermost](/images/icon.png)', options);
+
+        expect(messageHtmlToComponent(html, false, {hasPluginTooltips: false})).toMatchSnapshot();
+    });
 });

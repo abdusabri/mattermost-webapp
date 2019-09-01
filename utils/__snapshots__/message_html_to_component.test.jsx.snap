@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`messageHtmlToComponent Inline markdown image 1`] = `
+<Connect(MarkdownImage)
+  alt="Mattermost"
+  className="markdown-inline-img"
+  src="/images/icon.png"
+/>
+`;
+
 exports[`messageHtmlToComponent latex 1`] = `
 Array [
   <p>
