@@ -285,6 +285,142 @@ exports[`components/SingleImageView should match snapshot, SVG image 2`] = `
 </div>
 `;
 
+exports[`components/SingleImageView should match snapshot, inline markdown image 1`] = `
+<div
+  className="file-view--single"
+>
+  <div
+    className="file__image"
+  >
+    <div
+      className="image-name"
+      data-testid="image-name"
+    >
+      <button
+        aria-label="Toggle Embed Visibility"
+        className="style--none post__embed-visibility color--link"
+        data-expanded={true}
+        key="toggle"
+        onClick={[Function]}
+      />
+      <div
+        onClick={[Function]}
+      >
+        inline markdown image
+      </div>
+    </div>
+    <div
+      className="image-container"
+      style={Object {}}
+    >
+      <div
+        className="image-loaded  "
+        style={Object {}}
+      >
+        <SizeAwareImage
+          className=""
+          dimensions={
+            Object {
+              "height": 124,
+              "width": 787,
+            }
+          }
+          fileInfo={
+            Object {
+              "extension": "png",
+              "height": 124,
+              "link": "/images/logoHorizontal.png",
+              "name": "inline markdown image",
+              "width": 787,
+            }
+          }
+          onClick={[Function]}
+          onImageLoaded={[Function]}
+          showLoader={true}
+          src="/images/logoHorizontal.png"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/SingleImageView should match snapshot, inline markdown image 2`] = `
+<div
+  className="file-view--single"
+>
+  <div
+    className="file__image"
+  >
+    <div
+      className="image-name"
+      data-testid="image-name"
+    >
+      <button
+        aria-label="Toggle Embed Visibility"
+        className="style--none post__embed-visibility color--link"
+        data-expanded={true}
+        key="toggle"
+        onClick={[Function]}
+      />
+      <div
+        onClick={[Function]}
+      >
+        inline markdown image
+      </div>
+    </div>
+    <div
+      className="image-container"
+      style={Object {}}
+    >
+      <div
+        className="image-loaded image-fade-in "
+        style={Object {}}
+      >
+        <SizeAwareImage
+          className=""
+          dimensions={
+            Object {
+              "height": 124,
+              "width": 787,
+            }
+          }
+          fileInfo={
+            Object {
+              "extension": "png",
+              "height": 124,
+              "link": "/images/logoHorizontal.png",
+              "name": "inline markdown image",
+              "width": 787,
+            }
+          }
+          onClick={[Function]}
+          onImageLoaded={[Function]}
+          showLoader={true}
+          src="/images/logoHorizontal.png"
+        />
+      </div>
+    </div>
+    <Connect(ViewImageModal)
+      fileInfos={
+        Array [
+          Object {
+            "extension": "png",
+            "height": 124,
+            "link": "/images/logoHorizontal.png",
+            "name": "inline markdown image",
+            "width": 787,
+          },
+        ]
+      }
+      onModalDismissed={[Function]}
+      postId="original_post_id"
+      show={false}
+    />
+  </div>
+</div>
+`;
+
 exports[`components/SingleImageView should set loaded state on callback of onImageLoaded on SizeAwareImage component 1`] = `
 <div
   className="file-view--single"

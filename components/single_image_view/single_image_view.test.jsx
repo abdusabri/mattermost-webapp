@@ -56,6 +56,25 @@ describe('components/SingleImageView', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+    test('should match snapshot, inline markdown image', () => {
+        const fileInfo = {
+            extension: 'png',
+            height: 124,
+            width: 787,
+            link: '/images/logoHorizontal.png',
+            name: 'inline markdown image',
+        };
+        const props = {...baseProps, fileInfo};
+        const wrapper = shallow(
+            <SingleImageView {...props}/>
+        );
+
+        expect(wrapper).toMatchSnapshot();
+
+        wrapper.setState({loaded: true});
+        expect(wrapper).toMatchSnapshot();
+    });
+
     test('should match state on handleImageClick', () => {
         const wrapper = shallow(
             <SingleImageView {...baseProps}/>
