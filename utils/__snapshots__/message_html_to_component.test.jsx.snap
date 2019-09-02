@@ -4,6 +4,7 @@ exports[`messageHtmlToComponent Inline markdown image 1`] = `
 <Connect(MarkdownImage)
   alt="Mattermost"
   className="markdown-inline-img"
+  postId="post_id"
   src="/images/icon.png"
 />
 `;

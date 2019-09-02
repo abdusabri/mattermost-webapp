@@ -46,6 +46,6 @@ That was some latex!`;
         const options = {markdown: true};
         const html = TextFormatting.formatText('![Mattermost](/images/icon.png)', options);
 
-        expect(messageHtmlToComponent(html, false, {hasPluginTooltips: false})).toMatchSnapshot();
+        expect(messageHtmlToComponent(html, false, {hasPluginTooltips: false, postId: 'post_id'})).toMatchSnapshot();
     });
 });
