@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/MarkdownImage should match snapshot 1`] = `
+<Connect(ExternalImage)
+  imageMetadata={
+    Object {
+      "format": "png",
+      "height": 165,
+      "width": 1041,
+    }
+  }
+  src="/images/logo.png"
+>
+  <Component />
+</Connect(ExternalImage)>
+`;
+
+exports[`components/MarkdownImage should render a SingleImageView if the source is safe 1`] = `
+<Connect(SingleImageView)
+  fileInfo={
+    Object {
+      "extension": "png",
+      "height": 165,
+      "link": "https://example.com/image.png",
+      "name": "test image",
+      "width": 1041,
+    }
+  }
+  isEmbedVisible={true}
+  postId="post_id"
+/>
+`;
+
+exports[`components/MarkdownImage should render a link if the source is unsafe 1`] = `
+<a
+  className="theme markdown__link"
+  href="/images/logo.png"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  test image
+</a>
+`;
