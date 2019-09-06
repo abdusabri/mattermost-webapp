@@ -14,7 +14,7 @@ export default function MarkdownImage({imageMetadata, src, ...props}) {
             imageMetadata={imageMetadata}
         >
             {(safeSrc) => {
-                if (!safeSrc || !imageMetadata.format) {
+                if (!safeSrc) {
                     return (
                         <a
                             className='theme markdown__link'
@@ -27,10 +27,12 @@ export default function MarkdownImage({imageMetadata, src, ...props}) {
                         </a>
                     );
                 }
+
+                const getFileExtentionFromUrl = url => url.substring(safeSrc.lastIndexOf('.') + 1);
                 return (
                     <SingleImageView
                         fileInfo={{
-                            extension: imageMetadata.format,
+                            extension: imageMetadata.format || getFileExtentionFromUrl(safeSrc),
                             height: imageMetadata.height,
                             width: imageMetadata.width,
                             link: safeSrc,
