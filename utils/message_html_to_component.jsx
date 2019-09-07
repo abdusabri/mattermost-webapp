@@ -113,6 +113,7 @@ export function messageHtmlToComponent(html, isRHS, options = {}) {
                         {...attribs}
                         {...options.imageProps}
                         postId={options.postId}
+                        imageIsLink={html.includes('<a')}
                     />
                 );
             },

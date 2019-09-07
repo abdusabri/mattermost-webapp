@@ -6,8 +6,9 @@ import React from 'react';
 
 import ExternalImage from 'components/external_image';
 import SingleImageView from 'components/single_image_view';
+import SizeAwareImage from 'components/size_aware_image';
 
-export default function MarkdownImage({imageMetadata, src, ...props}) {
+export default function MarkdownImage({imageMetadata, src, imageIsLink, ...props}) {
     return (
         <ExternalImage
             src={src}
@@ -28,20 +29,29 @@ export default function MarkdownImage({imageMetadata, src, ...props}) {
                     );
                 }
 
-                const getFileExtentionFromUrl = url => url.substring(safeSrc.lastIndexOf('.') + 1);
-                return (
-                    <SingleImageView
-                        fileInfo={{
-                            extension: imageMetadata.format || getFileExtentionFromUrl(safeSrc),
-                            height: imageMetadata.height,
-                            width: imageMetadata.width,
-                            link: safeSrc,
-                            name: props.alt,
-                        }}
-                        isEmbedVisible={props.isEmbedVisible}
-                        postId={props.postId}
-                    />
-                );
+                if (imageIsLink) {
+                    return (
+                        <SizeAwareImage
+                            {...props}
+                            src={safeSrc}
+                        />
+                    );
+                } else {
+                    const getFileExtentionFromUrl = url => url.substring(safeSrc.lastIndexOf('.') + 1);
+                    return (
+                        <SingleImageView
+                            fileInfo={{
+                                extension: imageMetadata.format || getFileExtentionFromUrl(safeSrc),
+                                height: imageMetadata.height,
+                                width: imageMetadata.width,
+                                link: safeSrc,
+                                name: props.alt,
+                            }}
+                            isEmbedVisible={props.isEmbedVisible}
+                            postId={props.postId}
+                        />
+                    );    
+                }
             }}
         </ExternalImage>
     );
@@ -54,6 +64,7 @@ MarkdownImage.propTypes = {
     title: PropTypes.string,
     isEmbedVisible: PropTypes.bool.isRequired,
     postId: PropTypes.string.isRequired,
+    imageIsLink: PropTypes.bool.isRequired,
 };
 
 MarkdownImage.defaultProps = {
