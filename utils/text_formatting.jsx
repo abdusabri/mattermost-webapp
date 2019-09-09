@@ -64,6 +64,13 @@ export function formatText(text, inputOptions) {
     } else if (!('markdown' in options) || options.markdown) {
         // the markdown renderer will call doFormatText as necessary
         output = Markdown.format(output, options);
+        if (output.includes('class="markdown-inline-img"')) {
+            /*
+            ** remove p tag to allow other divs to be nested,
+            ** which allows markdown images to open preview window
+            */
+            output = output.replace(/<p>|<\/p>/g, '');
+        }
     } else {
         output = sanitizeHtml(output);
         output = doFormatText(output, options);
