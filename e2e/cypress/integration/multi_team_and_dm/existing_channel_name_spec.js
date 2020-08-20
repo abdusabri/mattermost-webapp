@@ -119,5 +119,5 @@ function channelNameTest(channelTypeHeading, channel) {
 function createNewChannel(name, isPrivate = false, testTeamId) {
     const makePrivate = isPrivate ? 'P' : 'O';
 
-    return cy.apiCreateChannel(testTeamId, name, name, makePrivate, 'Let us chat here').its('body');
+    return cy.apiCreateChannel(testTeamId, name, name, {type: makePrivate, purpose: 'Let us chat here'}).its('body');
 }

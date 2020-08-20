@@ -105,7 +105,7 @@ export function allowOAuth2({responseType, clientId, redirectUri, state, scope})
     });
 }
 
-export async function emailToLdap(loginId, password, token, ldapId, ldapPassword, success, error) {
+export async function emailToLdap({loginId, password, token, ldapId, ldapPassword, success, error}) {
     const {data, error: err} = await UserActions.switchEmailToLdap(loginId, password, ldapId, ldapPassword, token)(dispatch, getState);
     if (data && success) {
         success(data);

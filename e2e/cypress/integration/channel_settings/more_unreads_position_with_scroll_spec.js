@@ -33,7 +33,7 @@ describe('Channel settings', () => {
             // # Create 20 channels (based on length of channelNames array) to ensure that the channels list is scrollable
             cy.wrap(channelNames).each((name) => {
                 const displayName = `channel-${name}`;
-                cy.apiCreateChannel(team.id, name, displayName, 'O', '', '', false).then((response) => {
+                cy.apiCreateChannel(team.id, name, displayName, {unique: false}).then((response) => {
                     const testChannel = response.body;
 
                     // # Add our 2 created users to each channel so they can both post messages

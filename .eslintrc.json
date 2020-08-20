@@ -8,7 +8,8 @@
     "mattermost",
     "import",
     "cypress",
-    "jquery"
+    "jquery",
+    "func-params-args"
   ],
   "env": {
     "jest": true,
@@ -52,7 +53,15 @@
         ]
       }
     ],
-    "react/no-string-refs": 2
+    "react/no-string-refs": 2,
+    "func-params-args/func-params": ["warn", {
+      "global": 3,
+      "arrowFuncExpression": 4
+    }],
+    "func-params-args/func-args": ["error", {
+      "emailToLdap": 3,
+      "apiCreateChannel": 4
+    }]
   },
   "overrides": [
     {
