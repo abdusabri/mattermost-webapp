@@ -34,7 +34,7 @@ Cypress.Commands.add('apiGetBots', () => {
 // https://api.mattermost.com/#tag/channels
 // *****************************************************************************
 
-Cypress.Commands.add('apiCreateChannel', (teamId, name, displayName, type = 'O', purpose = '', header = '', unique = true) => {
+Cypress.Commands.add('apiCreateChannel', (teamId, name, displayName, {type = 'O', purpose = '', header = '', unique = true}) => {
     const randomSuffix = getRandomId();
 
     return cy.request({

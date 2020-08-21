@@ -70,22 +70,22 @@ export default class EmailToLDAP extends React.PureComponent {
         state.ldapPassword = ldapPassword;
         this.setState(state);
 
-        this.submit(this.props.email, password, '', ldapId, ldapPassword);
+        this.submit({loginId: this.props.email, password, ldapId, ldapPassword});
     }
 
-    submit = (loginId, password, token, ldapId, ldapPassword) => {
-        emailToLdap(
+    submit = ({loginId, password, token = '', ldapId, ldapPassword}) => {
+        emailToLdap({
             loginId,
             password,
             token,
-            ldapId || this.state.ldapId,
-            ldapPassword || this.state.ldapPassword,
-            (data) => {
+            ldapId: ldapId || this.state.ldapId,
+            ldapPassword: ldapPassword || this.state.ldapPassword,
+            success: (data) => {
                 if (data.follow_link) {
                     window.location.href = data.follow_link;
                 }
             },
-            (err) => {
+            error: (err) => {
                 if (!this.state.showMfa && err.server_error_id === 'mfa.validate_token.authenticate.app_error') {
                     this.setState({showMfa: true});
                 } else {
@@ -106,7 +106,7 @@ export default class EmailToLDAP extends React.PureComponent {
                     }
                 }
             },
-        );
+        });
     }
 
     render() {
